@@ -40,8 +40,8 @@ const MediaRow = ({ items }: { items: Item[] }) => (
               preload="auto"
               className="absolute inset-0 h-full w-full object-cover"
             />
-            <div className="absolute bottom-0 left-0 bg-background/90 backdrop-blur-sm px-4 py-2">
-              <span className="font-mono text-[10px] tracking-[0.25em] uppercase text-highlight">
+            <div className="absolute bottom-0 left-0 bg-background/90 backdrop-blur-sm px-3 py-1.5 md:px-4 md:py-2">
+              <span className="font-mono text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] uppercase text-highlight whitespace-nowrap">
                 Bastidores · CASE EJ
               </span>
             </div>
