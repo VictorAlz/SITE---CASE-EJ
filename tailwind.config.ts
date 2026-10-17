@@ -20,6 +20,10 @@ export default {
         mono: ["'JetBrains Mono'", "'Space Mono'", "ui-monospace", "monospace"],
       },
       colors: {
+        whatsapp: {
+          DEFAULT: "hsl(var(--whatsapp))",
+          foreground: "hsl(var(--whatsapp-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
