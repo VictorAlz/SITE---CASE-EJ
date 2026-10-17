@@ -104,17 +104,17 @@ const Header = () => {
         </div>
 
         {/* Mobile: logo center, menu button right */}
-        <div className="lg:hidden flex items-center justify-between h-20">
+        <div className="lg:hidden flex items-center justify-between h-24">
           <div className="w-10" />
           <Link
             to="/"
-            className="flex items-center flex-shrink-0 -my-2"
+            className="flex items-center flex-shrink-0"
             onClick={() => window.scrollTo(0, 0)}
           >
             <img
               src={logo}
               alt="CASE - Empresa Júnior"
-              className="h-20 w-auto object-contain invert brightness-0 scale-125 origin-center"
+              className="h-16 w-auto object-contain invert brightness-0 scale-125 origin-center"
             />
           </Link>
           <button
@@ -133,7 +133,7 @@ const Header = () => {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-brand-surface animate-fade-in">
+          <div className="lg:hidden fixed inset-x-0 top-24 bottom-0 z-40 overflow-y-auto bg-brand-surface animate-fade-in">
             <div className="container-custom flex min-h-full flex-col justify-between py-8">
               <div className="mb-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/45">
                 <span className="inline-block h-px w-8 bg-highlight/70" />
