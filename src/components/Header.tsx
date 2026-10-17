@@ -135,7 +135,7 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-brand-surface animate-fade-in">
             <div className="container-custom flex min-h-full flex-col justify-between py-8">
-              <div className="mb-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/65">
+              <div className="mb-6 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/80">
                 <span className="inline-block h-px w-8 bg-highlight/70" />
                 Navegação · CASE EJ
               </div>
@@ -146,14 +146,18 @@ const Header = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="group flex items-baseline justify-between gap-4 border-b border-brand-surface-foreground/10 py-5 animate-fade-in"
+                    className={`group flex items-baseline justify-between gap-4 border-b py-6 animate-fade-in ${
+                      isActive(link.path)
+                        ? "border-highlight/50"
+                        : "border-brand-surface-foreground/15"
+                    }`}
                     style={{ animationDelay: `${index * 60}ms` }}
                   >
                     <span
                       className={`font-serif text-3xl leading-none tracking-tight transition-colors ${
                         isActive(link.path)
-                          ? "text-highlight"
-                          : "text-brand-surface-foreground/85 group-hover:text-brand-surface-foreground"
+                          ? "text-brand-surface-foreground"
+                          : "text-brand-surface-foreground/90 group-hover:text-brand-surface-foreground"
                       }`}
                     >
                       {link.name}
@@ -162,7 +166,7 @@ const Header = () => {
                       className={`font-mono text-[10px] tracking-[0.25em] transition-colors ${
                         isActive(link.path)
                           ? "text-highlight"
-                          : "text-brand-surface-foreground/60 group-hover:text-brand-surface-foreground"
+                          : "text-brand-surface-foreground/70 group-hover:text-brand-surface-foreground"
                       }`}
                     >
                       {String(index + 1).padStart(2, "0")}
@@ -171,7 +175,7 @@ const Header = () => {
                 ))}
               </nav>
 
-              <div className="mt-12 space-y-5">
+              <div className="mt-10 space-y-5">
                 <ContactDialog
                   trigger={
                     <Button className="btn-highlight h-14 w-full rounded-md font-mono text-xs uppercase tracking-[0.2em]">
@@ -184,7 +188,7 @@ const Header = () => {
                   href="https://api.whatsapp.com/send?phone=5522999443332&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20desejo%20saber%20mais%20sobre%20a%20CASE%20EJ."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-brand-surface-foreground/70 transition-colors hover:text-brand-surface-foreground"
+                  className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-brand-surface-foreground/85 transition-colors hover:text-brand-surface-foreground"
                 >
                   <span>WhatsApp</span>
                   <span>+55 22 99944-3332</span>
