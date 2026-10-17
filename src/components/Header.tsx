@@ -175,7 +175,7 @@ const Header = () => {
                 ))}
               </nav>
 
-              <div className="mt-10 space-y-5">
+              <div className="mt-auto pt-10 space-y-5">
                 <ContactDialog
                   trigger={
                     <Button className="btn-highlight h-14 w-full rounded-md font-mono text-xs uppercase tracking-[0.2em]">
