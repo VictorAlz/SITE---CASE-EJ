@@ -146,7 +146,7 @@ const Header = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`group flex items-baseline justify-between gap-4 border-b py-6 animate-fade-in ${
+                    className={`group flex items-baseline justify-between gap-4 border-b py-8 animate-fade-in ${
                       isActive(link.path)
                         ? "border-highlight/50"
                         : "border-brand-surface-foreground/15"
@@ -176,6 +176,9 @@ const Header = () => {
               </nav>
 
               <div className="mt-auto pt-10 space-y-5">
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/60">
+                  Consultoria · Tecnologia · FeMASS
+                </p>
                 <ContactDialog
                   trigger={
                     <Button className="btn-highlight h-14 w-full rounded-md font-mono text-xs uppercase tracking-[0.2em]">
