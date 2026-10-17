@@ -38,6 +38,10 @@ All colors MUST be HSL.
     --highlight: 347 62% 58%; /* #D75373 */
     --highlight-foreground: 240 100% 99%;
 
+    /* Brand Surface - Header & mobile menu purple */
+    --brand-surface: 265 58% 32%; /* #4A2281 */
+    --brand-surface-foreground: 240 100% 99%;
+
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 240 100% 99%;
 

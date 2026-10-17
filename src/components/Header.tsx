@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import ContactDialog from "@/components/ContactDialog";
 import logoAsset from "@/assets/case-logo-descritivo.png.asset.json";
 const logo = logoAsset.url;
@@ -30,6 +30,19 @@ const Header = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Lock page scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Close the mobile menu whenever the route changes
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Sobre Nós", path: "/sobre" },
@@ -50,10 +63,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 shadow-md`}
-      style={{ backgroundColor: '#4a2281' }}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-brand-surface shadow-md transition-all duration-300">
       <nav className="container-custom">
         {/* Desktop: nav-left | logo center | nav-right */}
         <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-24 gap-8">
@@ -108,46 +118,78 @@ const Header = () => {
             />
           </Link>
           <button
-            className="p-2"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-brand-surface-foreground/20 text-brand-surface-foreground transition-colors hover:bg-brand-surface-foreground/10"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMobileMenuOpen}
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-white" />
+              <X className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
             ) : (
-              <Menu className="h-6 w-6 text-white" />
+              <Menu className="h-5 w-5" aria-hidden="true" strokeWidth={1.5} />
             )}
           </button>
         </div>
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div 
-            className="lg:hidden absolute top-20 left-0 right-0 border-b shadow-lg animate-fade-in"
-            style={{ backgroundColor: '#4a2281' }}
-          >
-            <div className="flex flex-col space-y-4 p-6">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`text-base font-medium transition-colors ${
-                    isActive(link.path)
-                      ? "text-white"
-                      : "text-white/80 hover:text-white"
-                  }`}
+          <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-brand-surface animate-fade-in">
+            <div className="container-custom flex min-h-full flex-col justify-between py-8">
+              <div className="mb-10 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/45">
+                <span className="inline-block h-px w-8 bg-highlight/70" />
+                Navegação · CASE EJ
+              </div>
+
+              <nav className="border-t border-brand-surface-foreground/10">
+                {navLinks.map((link, index) => (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="group flex items-baseline justify-between gap-4 border-b border-brand-surface-foreground/10 py-5 animate-fade-in"
+                    style={{ animationDelay: `${index * 60}ms` }}
+                  >
+                    <span
+                      className={`font-serif text-3xl leading-none tracking-tight transition-colors ${
+                        isActive(link.path)
+                          ? "text-highlight"
+                          : "text-brand-surface-foreground/85 group-hover:text-brand-surface-foreground"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                    <span
+                      className={`font-mono text-[10px] tracking-[0.25em] transition-colors ${
+                        isActive(link.path)
+                          ? "text-highlight"
+                          : "text-brand-surface-foreground/35 group-hover:text-brand-surface-foreground/60"
+                      }`}
+                    >
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </Link>
+                ))}
+              </nav>
+
+              <div className="mt-12 space-y-5">
+                <ContactDialog
+                  trigger={
+                    <Button className="btn-highlight h-14 w-full rounded-md font-mono text-xs uppercase tracking-[0.2em]">
+                      Entre em Contato
+                      <ArrowUpRight aria-hidden="true" className="ml-auto h-4 w-4" />
+                    </Button>
+                  }
+                />
+                <a
+                  href="https://api.whatsapp.com/send?phone=5522999443332&text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20desejo%20saber%20mais%20sobre%20a%20CASE%20EJ."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.2em] text-brand-surface-foreground/45 transition-colors hover:text-brand-surface-foreground"
                 >
-                  {link.name}
-                </Link>
-              ))}
-              <ContactDialog
-                trigger={
-                  <Button className="btn-highlight rounded-full w-full">
-                    Entre em Contato
-                  </Button>
-                }
-              />
+                  <span>WhatsApp</span>
+                  <span>+55 22 99944-3332</span>
+                </a>
+              </div>
             </div>
           </div>
         )}

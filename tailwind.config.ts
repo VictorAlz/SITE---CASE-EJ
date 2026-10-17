@@ -53,6 +53,10 @@ export default {
           DEFAULT: "hsl(var(--highlight))",
           foreground: "hsl(var(--highlight-foreground))",
         },
+        "brand-surface": {
+          DEFAULT: "hsl(var(--brand-surface) / <alpha-value>)",
+          foreground: "hsl(var(--brand-surface-foreground) / <alpha-value>)",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
