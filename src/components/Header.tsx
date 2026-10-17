@@ -66,7 +66,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-brand-surface shadow-md transition-all duration-300">
       <nav className="container-custom">
         {/* Desktop: nav-left | logo center | nav-right */}
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-24 gap-8">
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-28 gap-8">
           <div className="flex items-center justify-start gap-8">
             {leftLinks.map((link) => (
               <Link key={link.path} to={link.path} className={linkClass(link.path)}>
@@ -77,13 +77,13 @@ const Header = () => {
 
           <Link
             to="/"
-            className="flex items-center justify-center flex-shrink-0 -my-2"
+            className="flex items-center justify-center flex-shrink-0"
             onClick={() => window.scrollTo(0, 0)}
           >
             <img
               src={logo}
               alt="CASE - Empresa Júnior"
-              className="h-24 md:h-28 w-auto object-contain invert brightness-0 scale-150 origin-center"
+              className="h-24 w-auto object-contain invert brightness-0"
             />
           </Link>
 
