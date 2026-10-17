@@ -134,7 +134,7 @@ const Header = () => {
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <div className="lg:hidden fixed inset-x-0 top-20 bottom-0 z-40 overflow-y-auto bg-brand-surface animate-fade-in">
-            <div className="container-custom flex min-h-full flex-col justify-between py-8">
+            <div className="container-custom flex min-h-full flex-col py-8">
               <div className="mb-6 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.25em] text-brand-surface-foreground/80">
                 <span className="inline-block h-px w-8 bg-highlight/70" />
                 Navegação · CASE EJ
@@ -165,8 +165,8 @@ const Header = () => {
                     <span
                       className={`font-mono text-[10px] tracking-[0.25em] transition-colors ${
                         isActive(link.path)
-                          ? "text-highlight"
-                          : "text-brand-surface-foreground/70 group-hover:text-brand-surface-foreground"
+                          ? "text-accent"
+                          : "text-brand-surface-foreground/85 group-hover:text-brand-surface-foreground"
                       }`}
                     >
                       {String(index + 1).padStart(2, "0")}

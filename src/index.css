@@ -156,7 +156,7 @@ All colors MUST be HSL.
   }
 
   .btn-highlight {
-    @apply bg-[hsl(var(--highlight))] text-[hsl(var(--highlight-foreground))] hover:bg-[hsl(var(--highlight))]/90 shadow-md hover:shadow-lg transition-all duration-300;
+    @apply !bg-[hsl(var(--highlight))] !text-[hsl(var(--highlight-foreground))] hover:!bg-[hsl(var(--highlight))]/90 shadow-md hover:shadow-lg transition-all duration-300;
   }
 
   .card-hover {
