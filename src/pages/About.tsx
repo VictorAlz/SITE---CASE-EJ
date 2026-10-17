@@ -74,6 +74,8 @@ const About = () => {
         </div>
       </section>
 
+      <HistorySection />
+
       {/* Mission, Vision, Values */}
       <section className="section-padding bg-muted/20">
         <div className="container-custom">
