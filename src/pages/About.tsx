@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HistorySection from "@/components/HistorySection";
 import { CheckCircle2 } from "lucide-react";
 
 const About = () => {
