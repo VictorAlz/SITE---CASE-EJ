@@ -1,4 +1,4 @@
-import { Calendar, TrendingUp, Users, Award } from "lucide-react";
+import { Calendar, TrendingUp, Users, Award, Trophy } from "lucide-react";
 
 const HistorySection = () => {
   const milestones = [
@@ -32,6 +32,13 @@ const HistorySection = () => {
       title: "Reestruturação",
       description: "Reestruturação interna, novos desafios e meta do ano batida",
     },
+    {
+      icon: Trophy,
+      year: "2026",
+      title: "Consolidação",
+      description:
+        "Meta de faturamento batida 5 meses antes do fim do ano, com avanço de +500% no lucro líquido.",
+    },
   ];
 
   return (
@@ -52,7 +59,7 @@ const HistorySection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-border border border-border">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
           {milestones.map((milestone, index) => (
             <div
               key={index}
