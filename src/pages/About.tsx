@@ -11,12 +11,6 @@ const About = () => {
     "Aperfeiçoamento contínuo",
     "Eficiência Operacional",
     "Foco na satisfação do cliente",
-    "Liderança e trabalho em equipe",
-    "Gestão empresarial na prática",
-    "Responsabilidade, ética e visão estratégica",
-    "Aprendizado além da sala de aula",
-    "Compromisso com resultados",
-    "Inovação e criatividade",
   ];
 
   return (
