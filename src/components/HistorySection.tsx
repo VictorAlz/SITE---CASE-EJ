@@ -1,5 +1,12 @@
 import { Calendar, TrendingUp, Users, Award, Trophy } from "lucide-react";
 
+import codigoAsset from "@/assets/historia-codigo.jpg.asset.json";
+import certificadoAsset from "@/assets/historia-certificado.jpg.asset.json";
+import equipeEventoAsset from "@/assets/historia-equipe-evento.jpg.asset.json";
+import timeReunidoAsset from "@/assets/historia-time-reunido.jpg.asset.json";
+import oficinaAsset from "@/assets/historia-oficina.jpg.asset.json";
+import videoAsset from "@/assets/historia-video.mp4.asset.json";
+
 const HistorySection = () => {
   const milestones = [
     {
