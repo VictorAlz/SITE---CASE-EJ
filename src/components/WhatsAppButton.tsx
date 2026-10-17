@@ -8,7 +8,7 @@ const WhatsAppButton = () => {
   if (hiddenRoutes.some((r) => pathname.startsWith(r))) return null;
 
   const phone = "5522999443332";
-  const message = encodeURIComponent("Olá! Gostaria de saber mais sobre a CaseEJ.");
+  const message = encodeURIComponent("Olá! Vim pelo site e desejo saber mais sobre a CASE EJ.");
 
   return (
     <Button
