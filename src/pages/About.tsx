@@ -5,6 +5,12 @@ import { CheckCircle2 } from "lucide-react";
 
 const About = () => {
   const values = [
+    "Comprometimento",
+    "Preparar para o mercado",
+    "Orgulho de ser CASE",
+    "Aperfeiçoamento contínuo",
+    "Eficiência Operacional",
+    "Foco na satisfação do cliente",
     "Liderança e trabalho em equipe",
     "Gestão empresarial na prática",
     "Responsabilidade, ética e visão estratégica",
