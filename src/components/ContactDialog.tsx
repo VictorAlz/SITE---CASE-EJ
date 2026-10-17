@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Loader2 } from "lucide-react";
+import { ArrowUpRight, Loader2, Mail } from "lucide-react";
 import { z } from "zod";
 
 const contactSchema = z.object({
@@ -100,18 +100,22 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="w-[92vw] max-w-[500px] max-h-[90vh] overflow-y-auto p-4 sm:p-6 mx-auto rounded-xl">
-        <DialogHeader className="space-y-1.5 sm:space-y-2 pb-2">
-          <DialogTitle className="text-lg sm:text-xl md:text-2xl leading-tight">
-            Fale com um Especialista
+      <DialogContent className="w-[calc(100%_-_2rem)] max-w-[560px] max-h-[calc(100dvh_-_2rem)] gap-0 overflow-y-auto rounded-lg border-border p-0 shadow-lg">
+        <DialogHeader className="space-y-4 border-b border-border bg-muted/50 px-6 pb-6 pt-8 text-left sm:px-8 sm:pb-7 sm:pt-9">
+          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-highlight">
+            <Mail className="h-4 w-4" aria-hidden="true" />
+            Contato · CASE EJ
+          </div>
+          <DialogTitle className="max-w-[380px] font-serif text-3xl font-normal leading-tight tracking-normal sm:text-4xl">
+            Fale com um <span className="text-highlight">Especialista</span>
           </DialogTitle>
-          <DialogDescription className="text-xs sm:text-sm leading-relaxed">
+          <DialogDescription className="max-w-sm font-sans text-sm leading-relaxed">
             Conte-nos sobre seu projeto e entraremos em contato em breve.
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-          <div className="space-y-1 sm:space-y-1.5">
-            <Label htmlFor="name" className="text-xs sm:text-sm font-medium">
+        <form onSubmit={handleSubmit} className="space-y-5 px-6 py-6 sm:px-8 sm:py-7">
+          <div className="space-y-2">
+            <Label htmlFor="name" className="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
               Nome Completo *
             </Label>
             <Input
@@ -120,13 +124,13 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
               value={formData.name}
               onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
-              className="h-9 sm:h-10 text-sm"
+              className="h-12 rounded-md border-border bg-muted/30 px-3 font-sans text-base transition-colors focus:bg-background focus-visible:ring-highlight/40"
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-            <div className="space-y-1 sm:space-y-1.5">
-              <Label htmlFor="email" className="text-xs sm:text-sm font-medium">
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-4">
+            <div className="space-y-2">
+              <Label htmlFor="email" className="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
                 E-mail *
               </Label>
               <Input
@@ -136,12 +140,12 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
-                className="h-9 sm:h-10 text-sm"
+                className="h-12 rounded-md border-border bg-muted/30 px-3 font-sans text-base transition-colors focus:bg-background focus-visible:ring-highlight/40"
               />
             </div>
 
-            <div className="space-y-1 sm:space-y-1.5">
-              <Label htmlFor="phone" className="text-xs sm:text-sm font-medium">
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
                 Telefone
               </Label>
               <Input
@@ -150,13 +154,13 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
                 placeholder="(00) 00000-0000"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="h-9 sm:h-10 text-sm"
+                className="h-12 rounded-md border-border bg-muted/30 px-3 font-sans text-base transition-colors focus:bg-background focus-visible:ring-highlight/40"
               />
             </div>
           </div>
 
-          <div className="space-y-1 sm:space-y-1.5">
-            <Label htmlFor="serviceType" className="text-xs sm:text-sm font-medium">
+          <div className="space-y-2">
+            <Label htmlFor="serviceType" className="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
               Tipo de Serviço *
             </Label>
             <Select
@@ -164,7 +168,7 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
               onValueChange={(value) => setFormData({ ...formData, serviceType: value })}
               required
             >
-              <SelectTrigger id="serviceType" className="h-9 sm:h-10 text-sm">
+              <SelectTrigger id="serviceType" className="h-12 rounded-md border-border bg-muted/30 px-3 font-sans text-base transition-colors focus:bg-background focus-visible:ring-highlight/40">
                 <SelectValue placeholder="Selecione o tipo de serviço" />
               </SelectTrigger>
               <SelectContent>
@@ -178,8 +182,8 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
             </Select>
           </div>
 
-          <div className="space-y-1 sm:space-y-1.5">
-            <Label htmlFor="message" className="text-xs sm:text-sm font-medium">
+          <div className="space-y-2">
+            <Label htmlFor="message" className="font-mono text-[10px] font-medium uppercase tracking-widest text-muted-foreground">
               Mensagem
             </Label>
             <Textarea
@@ -188,16 +192,20 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               rows={3}
-              className="resize-none text-sm min-h-[70px] sm:min-h-[80px]"
+              className="min-h-[104px] resize-none rounded-md border-border bg-muted/30 p-3 font-sans text-base transition-colors focus:bg-background focus-visible:ring-highlight/40"
             />
           </div>
 
           <Button 
             type="submit" 
-            className="w-full btn-highlight text-sm h-10 sm:h-11 mt-2"
+            className="btn-highlight h-12 w-full rounded-md font-mono text-xs uppercase tracking-widest"
             disabled={isLoading}
           >
-            {isLoading ? <Loader2 className="animate-spin" /> : "Enviar Mensagem"}
+            {isLoading ? (
+              <><Loader2 className="animate-spin motion-reduce:animate-none" /> Enviando…</>
+            ) : (
+              <>Enviar Mensagem <ArrowUpRight aria-hidden="true" className="ml-auto" /></>
+            )}
           </Button>
         </form>
       </DialogContent>

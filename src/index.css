@@ -45,6 +45,9 @@ All colors MUST be HSL.
     --input: 240 10% 90%;
     --ring: 268 48% 29%;
 
+    --whatsapp: 142 70% 36%;
+    --whatsapp-foreground: 0 0% 100%;
+
     --radius: 0.75rem;
 
     /* Gradients */
