@@ -100,7 +100,7 @@ const ContactDialog = ({ trigger }: ContactDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>{trigger}</DialogTrigger>
-      <DialogContent className="w-[calc(100%-2rem)] max-w-[560px] max-h-[calc(100dvh-2rem)] gap-0 overflow-y-auto rounded-lg border-border p-0 shadow-lg">
+      <DialogContent className="w-[calc(100%_-_2rem)] max-w-[560px] max-h-[calc(100dvh_-_2rem)] gap-0 overflow-y-auto rounded-lg border-border p-0 shadow-lg">
         <DialogHeader className="space-y-4 border-b border-border bg-muted/50 px-6 pb-6 pt-8 text-left sm:px-8 sm:pb-7 sm:pt-9">
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-highlight">
             <Mail className="h-4 w-4" aria-hidden="true" />
