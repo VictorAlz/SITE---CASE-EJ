@@ -13,7 +13,7 @@ type Item = {
   isVideo?: boolean;
 };
 
-const video: Item = { src: videoAsset.url, ratio: 1280 / 2276, isVideo: true, label: "Bastidores · CASE EJ" };
+const video: Item = { src: videoAsset.url, ratio: 1280 / 2276, isVideo: true, label: "Bastidores" };
 const codigo: Item = { src: codigoAsset.url, ratio: 1080 / 1920, alt: "Membros da CASE desenvolvendo em evento", label: "Dev · Evento" };
 const certificado: Item = { src: certificadoAsset.url, ratio: 1194 / 802, alt: "Time da CASE com certificado de reconhecimento", label: "Reconhecimento" };
 const equipeEvento: Item = { src: equipeEventoAsset.url, ratio: 1600 / 1064, alt: "Membros da CASE em evento", label: "Equipe · Evento" };
@@ -51,7 +51,7 @@ const MediaRow = ({ items }: { items: Item[] }) => (
               loop
               playsInline
               preload="auto"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain bg-brand-surface"
             />
             <Caption label={item.label} persistent />
           </>
