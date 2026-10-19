@@ -4,12 +4,9 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { User, Session } from "@supabase/supabase-js";
-import { LogOut, User as UserIcon, LayoutDashboard, Briefcase, ListChecks, Shield, Activity, BookOpen, FileText } from "lucide-react";
+import { LogOut, User as UserIcon, LayoutDashboard, ListChecks, Shield, FileText } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import TasksPanel from "@/components/admin/TasksPanel";
-import ProjectsHubPanel from "@/components/admin/ProjectsHubPanel";
-import PortfolioHealthPanel from "@/components/admin/PortfolioHealthPanel";
-import KnowledgeBasePanel from "@/components/admin/KnowledgeBasePanel";
 import ProfileEditor from "@/components/admin/ProfileEditor";
 
 type AppRole = "trainee" | "membro" | "diretor" | "presidencia" | "admin";
@@ -71,9 +68,6 @@ const MemberDashboard = () => {
   const menuItems = [
     { icon: LayoutDashboard, label: "Início", key: "dashboard" },
     { icon: ListChecks, label: "Minhas Tarefas", key: "tarefas" },
-    { icon: Activity, label: "Portfólio", key: "portfolio" },
-    { icon: Briefcase, label: "Hub de Projetos", key: "hub" },
-    { icon: BookOpen, label: "Wiki", key: "wiki" },
     { icon: UserIcon, label: "Perfil", key: "perfil" },
     { icon: FileText, label: "Contratos", key: "contratos", route: "/contratos" },
   ];
@@ -82,16 +76,13 @@ const MemberDashboard = () => {
   const canDelegate =
     isAdmin ||
     (!!projectRole && ["Coordenador de Projetos", "Delivery Manager", "Diretor de Projetos"].includes(projectRole));
-  const canManageHub =
-    isAdmin ||
-    (!!projectRole && ["Diretor de Projetos", "Coordenador de Projetos"].includes(projectRole));
 
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-card border-b border-border px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h1 className="text-xl font-bold">Hub de Projetos</h1>
+            <h1 className="text-xl font-bold">Área do Membro</h1>
             {userRole && <Badge variant="outline">{userRole}</Badge>}
           </div>
           <div className="flex items-center gap-4">
@@ -169,34 +160,19 @@ const MemberDashboard = () => {
                     Ver tarefas
                   </Button>
                 </div>
-                <div
-                  className="bg-card rounded-xl border border-border p-6 cursor-pointer hover:border-primary/50 transition-colors"
-                  onClick={() => setActiveTab("hub")}
-                >
-                  <Briefcase className="h-8 w-8 text-primary mb-3" />
-                  <h3 className="font-semibold mb-1">Hub de Projetos</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Time e cargos do departamento.
-                  </p>
-                </div>
+              </div>
               </div>
             </div>
           )}
 
           {activeTab === "tarefas" && <TasksPanel currentUserId={user.id} canManage={canDelegate} />}
-          {activeTab === "hub" && <ProjectsHubPanel currentUserId={user.id} canManage={canManageHub} />}
-          {activeTab === "portfolio" && (
-            <PortfolioHealthPanel currentUserId={user.id} isAdmin={isAdmin} canDelegate={canDelegate} />
-          )}
-          {activeTab === "wiki" && <KnowledgeBasePanel currentUserId={user.id} canManage={canManageHub} />}
-
           {activeTab === "perfil" && (
             <div className="max-w-md">
               <h2 className="text-2xl font-bold mb-6">Meu Perfil</h2>
               <div className="bg-card rounded-xl border border-border p-6 space-y-4">
                 <ProfileEditor user={user} />
                 <div>
-                  <p className="text-sm text-muted-foreground">Cargo no Hub de Projetos</p>
+                  <p className="text-sm text-muted-foreground">Cargo</p>
                   <p className="font-medium">{projectRole || "—"}</p>
                 </div>
               </div>

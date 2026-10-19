@@ -24,8 +24,6 @@ import {
   Check,
   ListChecks,
   UserSquare2,
-  Activity,
-  BookOpen,
 } from "lucide-react";
 import { FileText } from "lucide-react";
 import {
@@ -49,9 +47,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import TasksPanel from "@/components/admin/TasksPanel";
-import ProjectsHubPanel from "@/components/admin/ProjectsHubPanel";
-import PortfolioHealthPanel from "@/components/admin/PortfolioHealthPanel";
-import KnowledgeBasePanel from "@/components/admin/KnowledgeBasePanel";
 import ProfileEditor from "@/components/admin/ProfileEditor";
 
 type AppRole = "trainee" | "membro" | "diretor" | "presidencia" | "admin";
@@ -529,9 +524,6 @@ const AdminDashboard = () => {
     { icon: LayoutDashboard, label: "Dashboard", key: "dashboard", minRole: "trainee" as AppRole },
     { icon: Mail, label: "Leads", key: "leads", minRole: "membro" as AppRole },
     { icon: ListChecks, label: "Tarefas", key: "tarefas", minRole: "trainee" as AppRole },
-    { icon: Briefcase, label: "Hub Projetos", key: "hub", minRole: "trainee" as AppRole },
-    { icon: Activity, label: "Portfólio", key: "portfolio", minRole: "trainee" as AppRole },
-    { icon: BookOpen, label: "Wiki", key: "wiki", minRole: "trainee" as AppRole },
     { icon: Briefcase, label: "Cases", key: "cases", minRole: "membro" as AppRole },
     { icon: Users, label: "Equipe", key: "equipe", minRole: "diretor" as AppRole },
     { icon: Shield, label: "Usuários", key: "usuarios", minRole: "admin" as AppRole },
@@ -992,28 +984,6 @@ const AdminDashboard = () => {
               currentUserId={user.id}
               canManage={hasMinimumRole("admin") || projectRoleAllowsDelegation}
             />
-          )}
-
-          {activeTab === "hub" && user && (
-          <ProjectsHubPanel
-            currentUserId={user.id}
-            canManage={
-              hasMinimumRole("admin") ||
-              (!!projectRole && ["Diretor de Projetos", "Coordenador de Projetos"].includes(projectRole))
-            }
-          />
-          )}
-
-          {activeTab === "portfolio" && user && (
-            <PortfolioHealthPanel
-              currentUserId={user.id}
-              isAdmin={hasMinimumRole("admin")}
-              canDelegate={hasMinimumRole("admin") || projectRoleAllowsDelegation}
-            />
-          )}
-
-          {activeTab === "wiki" && user && (
-            <KnowledgeBasePanel currentUserId={user.id} canManage={hasMinimumRole("diretor")} />
           )}
 
           {activeTab === "equipe" && hasMinimumRole("diretor") && (
