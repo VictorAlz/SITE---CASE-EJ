@@ -1,0 +1,3 @@
+- [ ] Retirar Hub de Projetos, Portfólio e Saúde e Diretrizes da área logada.
+- [ ] Limpar membros e contas, preservando apenas victor.alves@caseej.com.
+- [ ] Verificar a área logada e os registros após a limpeza.
