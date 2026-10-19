@@ -2,4 +2,5 @@
 - [x] Limpar membros e contas, preservando apenas victor.alves@caseej.com (sete contas excluídas; equipe pública preservada).
 - [x] Verificar a área logada e os registros após a limpeza.
 - [x] Adicionar os LinkedIns de Ryan, Maria, Victor, Rafael e Elecides na equipe pública; os cinco links foram conferidos na página /equipe.
+- [x] Mostrar botão de e-mail para todos os membros, desativado enquanto o endereço não for informado; conferido na página.
 - [ ] Adicionar as fotos reais dos membros — bloqueado: LinkedIn recusou acesso público às fotos; aguardando envio das cinco imagens pelo usuário.
