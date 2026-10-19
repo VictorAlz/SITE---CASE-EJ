@@ -163,15 +163,30 @@ const Team = () => {
                           <Linkedin className="h-5 w-5 text-primary" />
                         </a>
                       )}
-                      {member.email && (
-                        <a
-                          href={`mailto:${member.email}`}
-                          className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors flex items-center justify-center"
-                          aria-label="Email"
-                        >
-                          <Mail className="h-5 w-5 text-primary" />
-                        </a>
-                      )}
+                      <span title={member.email ? `Enviar e-mail para ${member.name}` : "E-mail ainda não informado"}>
+                        {member.email ? (
+                          <Button
+                            asChild
+                            variant="ghost"
+                            size="icon"
+                            className="rounded-full bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary"
+                          >
+                            <a href={`mailto:${member.email}`} aria-label={`E-mail de ${member.name}`}>
+                              <Mail className="h-5 w-5" />
+                            </a>
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            disabled
+                            aria-label={`E-mail de ${member.name} ainda não informado`}
+                            className="rounded-full bg-primary/10 text-primary"
+                          >
+                            <Mail className="h-5 w-5" />
+                          </Button>
+                        )}
+                      </span>
                     </div>
                   </CardContent>
                 </Card>
