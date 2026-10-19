@@ -1,5 +1,5 @@
 - [x] Retirar Hub de Projetos, Portfólio e Saúde e Diretrizes da área logada.
 - [x] Limpar membros e contas, preservando apenas victor.alves@caseej.com (sete contas excluídas; equipe pública preservada).
 - [x] Verificar a área logada e os registros após a limpeza.
-- [ ] Adicionar os LinkedIns de Ryan, Maria, Victor, Rafael e Elecides na equipe pública.
-- [ ] Obter as fotos públicas dos perfis do LinkedIn e verificar a página de equipe.
+- [x] Adicionar os LinkedIns de Ryan, Maria, Victor, Rafael e Elecides na equipe pública; os cinco links foram conferidos na página /equipe.
+- [ ] Adicionar as fotos reais dos membros — bloqueado: LinkedIn recusou acesso público às fotos; aguardando envio das cinco imagens pelo usuário.
