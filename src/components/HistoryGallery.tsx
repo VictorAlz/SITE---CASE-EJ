@@ -51,7 +51,7 @@ const MediaRow = ({ items }: { items: Item[] }) => (
               loop
               playsInline
               preload="auto"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain bg-brand-surface"
             />
             <Caption label={item.label} persistent />
           </>
