@@ -8,3 +8,4 @@
 - [x] Simplificar cases em boxes de projeto e resultado.
 - [x] Adicionar notícias TECH abaixo dos parceiros e blog universitário com leitura de artigos.
 - [x] Adicionar Blog no header e footer e verificar navegação.
+- [x] Adicionar seção na home abaixo de Parceiros & apoiadores com as fotos "Sede · Reunião" e "Reconhecimento" e copy curta de trajetória; conferir no desktop, no celular e o botão de contato.
