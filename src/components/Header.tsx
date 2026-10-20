@@ -49,6 +49,7 @@ const Header = () => {
     { name: "Cases", path: "/cases" },
     { name: "Soluções", path: "/solucoes" },
     { name: "Nosso Time", path: "/equipe" },
+    { name: "Blog", path: "/blog" },
   ];
 
   const half = Math.ceil(navLinks.length / 2);
@@ -57,7 +58,7 @@ const Header = () => {
 
   const linkClass = (path: string) =>
     `font-mono text-xs uppercase tracking-[0.18em] transition-colors ${
-      isActive(path) ? "text-white" : "text-white/70 hover:text-white"
+      isActive(path) ? "text-brand-surface-foreground" : "text-brand-surface-foreground/70 hover:text-brand-surface-foreground"
     }`;
 
   const isActive = (path: string) => location.pathname === path;
@@ -66,8 +67,8 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-brand-surface shadow-md transition-all duration-300">
       <nav className="container-custom">
         {/* Desktop: nav-left | logo center | nav-right */}
-        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-24 gap-8">
-          <div className="flex items-center justify-start gap-8">
+        <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-24 gap-4 xl:gap-8">
+          <div className="flex items-center justify-start gap-4 xl:gap-8">
             {leftLinks.map((link) => (
               <Link key={link.path} to={link.path} className={linkClass(link.path)}>
                 {link.name}
@@ -87,7 +88,7 @@ const Header = () => {
             />
           </Link>
 
-          <div className="flex items-center justify-end gap-8">
+          <div className="flex items-center justify-end gap-4 xl:gap-8">
             {rightLinks.map((link) => (
               <Link key={link.path} to={link.path} className={linkClass(link.path)}>
                 {link.name}
