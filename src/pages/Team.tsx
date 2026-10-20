@@ -1,26 +1,17 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import OrgChart from "@/components/OrgChart";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Mail, AlertCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import type { TeamMember } from "@/lib/team-types";
 
 interface PSSettings {
   active: boolean;
   form_url: string;
   description: string;
-}
-
-interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  bio: string | null;
-  linkedin_url: string | null;
-  email: string | null;
-  photo_url: string | null;
-  display_order: number;
 }
 
 const Team = () => {
@@ -90,6 +81,35 @@ const Team = () => {
               Conheça os profissionais excepcionais que tornam possível a transformação dos nossos clientes.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Organograma — Presidência no topo, diretores em linha horizontal */}
+      <section className="pb-24 pt-4">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in mb-14">
+            <div className="flex items-center justify-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
+              <span className="h-px w-10 bg-border" />
+              <span>Estrutura</span>
+              <span className="h-px w-10 bg-border" />
+            </div>
+            <h2 className="font-serif text-4xl md:text-5xl font-normal leading-[1.1]">
+              Presidência ao topo, <em className="italic text-highlight">poder horizontal</em>
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Abaixo da presidência, a diretoria caminha lado a lado: decisões
+              construídas em conjunto, sem hierarquia entre as frentes.
+            </p>
+          </div>
+          {teamLoading ? (
+            <div className="flex justify-center">
+              <div className="animate-pulse w-56 h-64 bg-muted rounded-lg"></div>
+            </div>
+          ) : (
+            <div className="max-w-5xl mx-auto">
+              <OrgChart members={teamMembers} />
+            </div>
+          )}
         </div>
       </section>
 
