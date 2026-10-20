@@ -86,19 +86,10 @@ const Team = () => {
       {/* Organograma — Presidência no topo, diretores em linha horizontal */}
       <section className="pb-24 pt-4">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center space-y-6 animate-fade-in mb-14">
-            <div className="flex items-center justify-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-              <span className="h-px w-10 bg-border" />
-              <span>Estrutura</span>
-              <span className="h-px w-10 bg-border" />
-            </div>
+          <div className="max-w-3xl mx-auto text-center animate-fade-in mb-14">
             <h2 className="font-serif text-4xl md:text-5xl font-normal leading-[1.1]">
-              Presidência ao topo, <em className="italic text-highlight">poder horizontal</em>
+              Um time <em className="italic text-highlight">competente</em> e experiente
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Abaixo da presidência, a diretoria caminha lado a lado: decisões
-              construídas em conjunto, sem hierarquia entre as frentes.
-            </p>
           </div>
           {teamLoading ? (
             <div className="flex justify-center">
