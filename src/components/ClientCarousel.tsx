@@ -30,7 +30,7 @@ const ClientCarousel = () => {
 
         {/* Carrossel Infinito */}
         <div className="relative overflow-hidden border-t border-border pt-10">
-          <div className="flex animate-scroll">
+          <div className="flex animate-[scroll_20s_linear_infinite] md:animate-scroll">
             {duplicatedClients.map((client, index) => (
               <div
                 key={index}
