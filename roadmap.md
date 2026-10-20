@@ -5,6 +5,6 @@
 - [x] Mostrar botão de e-mail para todos os membros, desativado enquanto o endereço não for informado; conferido na página.
 - [x] Adicionar as fotos reais dos membros na equipe pública — cinco imagens enviadas pelo usuário, hospedadas na CDN e conferidas em /equipe.
 - [x] Enxugar o texto acima do organograma para apenas "Um time competente e experiente".
-- [ ] Simplificar cases em boxes de projeto e resultado.
-- [ ] Adicionar notícias TECH abaixo dos parceiros e blog universitário com leitura de artigos.
-- [ ] Adicionar Blog no header e footer e verificar navegação.
+- [x] Simplificar cases em boxes de projeto e resultado.
+- [x] Adicionar notícias TECH abaixo dos parceiros e blog universitário com leitura de artigos.
+- [x] Adicionar Blog no header e footer e verificar navegação.
