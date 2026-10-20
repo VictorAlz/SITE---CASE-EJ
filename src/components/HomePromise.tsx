@@ -81,7 +81,7 @@ const HomePromise = () => (
 
       {/* Fileirinha com as duas fotos, cada uma na sua proporção, sem corte */}
       <div
-        className="flex gap-px bg-border border border-border w-full max-w-md"
+        className="flex gap-px bg-border border border-border w-full max-w-xl"
         style={{ aspectRatio: `${rowRatio} / 1` }}
       >
         {shots.map((shot, index) => (
