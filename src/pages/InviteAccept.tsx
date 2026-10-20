@@ -33,9 +33,7 @@ const InviteAccept = () => {
     const load = async () => {
       if (!token) return;
       const { data, error } = await supabase
-        .from("project_invites")
-        .select("*")
-        .eq("token", token)
+        .rpc("get_invite_by_token", { _token: token })
         .maybeSingle();
       if (error || !data) {
         setError("Convite não encontrado.");
@@ -53,11 +51,9 @@ const InviteAccept = () => {
   }, [token]);
 
   const finalizeAccept = async (uid: string) => {
-    const { error: upErr } = await supabase
-      .from("project_invites")
-      .update({ status: "usado", used_by: uid, used_at: new Date().toISOString() })
-      .eq("token", token!);
+    const { data: ok, error: upErr } = await supabase.rpc("accept_invite", { _token: token! });
     if (upErr) throw upErr;
+    if (!ok) throw new Error("Convite inválido ou expirado.");
     await supabase.from("profiles").update({ project_role: invite.cargo }).eq("user_id", uid);
     toast({ title: "Bem-vindo ao Hub!", description: `Acesso liberado como ${invite.cargo}.` });
     navigate("/membro");
