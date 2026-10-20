@@ -90,6 +90,10 @@ const Team = () => {
             <h2 className="font-serif text-4xl md:text-5xl font-normal leading-[1.1]">
               Um time <em className="italic text-highlight">competente</em> e experiente
             </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mt-6">
+              É essa experiência reunida que coloca de pé a solução que o seu
+              negócio precisa — do primeiro esboço ao resultado no ar.
+            </p>
           </div>
           {teamLoading ? (
             <div className="flex justify-center">
