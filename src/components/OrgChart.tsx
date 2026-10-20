@@ -1,3 +1,4 @@
+import { Linkedin, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { TeamMember } from "@/lib/team-types";
 
@@ -52,6 +53,43 @@ const MemberNode = ({
         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-highlight mt-1 leading-snug">
           {member.role}
         </p>
+      </div>
+      <div className="flex justify-center gap-2 pt-1">
+        {member.linkedin_url ? (
+          <a
+            href={member.linkedin_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`LinkedIn de ${member.name}`}
+            className="w-8 h-8 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors flex items-center justify-center"
+          >
+            <Linkedin className="h-4 w-4 text-primary" />
+          </a>
+        ) : (
+          <span
+            aria-label={`LinkedIn de ${member.name} não informado`}
+            className="w-8 h-8 rounded-full bg-muted opacity-50 flex items-center justify-center"
+          >
+            <Linkedin className="h-4 w-4 text-muted-foreground" />
+          </span>
+        )}
+        {member.email ? (
+          <a
+            href={`mailto:${member.email}`}
+            aria-label={`E-mail de ${member.name}`}
+            className="w-8 h-8 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors flex items-center justify-center"
+          >
+            <Mail className="h-4 w-4 text-primary" />
+          </a>
+        ) : (
+          <span
+            title="E-mail ainda não informado"
+            aria-label={`E-mail de ${member.name} ainda não informado`}
+            className="w-8 h-8 rounded-full bg-muted opacity-50 flex items-center justify-center"
+          >
+            <Mail className="h-4 w-4 text-muted-foreground" />
+          </span>
+        )}
       </div>
     </CardContent>
   </Card>
