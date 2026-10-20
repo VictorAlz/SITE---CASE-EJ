@@ -41,8 +41,8 @@ const ShotCell = ({ shot, style, delay }: { shot: Shot; style?: CSSProperties; d
       className="absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
     />
     <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/20" />
-    <div className="absolute bottom-0 left-0 z-10 px-2 py-1 bg-background/90 backdrop-blur-sm">
-      <span className="font-mono text-[7px] tracking-[0.12em] uppercase text-highlight whitespace-nowrap">
+    <div className="absolute bottom-0 left-0 z-10 px-2.5 py-1.5 bg-background/90 backdrop-blur-sm">
+      <span className="font-mono text-[8px] tracking-[0.14em] uppercase text-highlight whitespace-nowrap">
         {shot.label}
       </span>
     </div>
