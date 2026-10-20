@@ -1,3 +1,4 @@
+import { Linkedin, Mail } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import type { TeamMember } from "@/lib/team-types";
 
