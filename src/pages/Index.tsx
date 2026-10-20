@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ClientCarousel from "@/components/ClientCarousel";
+import TechNews from "@/components/TechNews";
 import HistorySection from "@/components/HistorySection";
 import CaseCard from "@/components/CaseCard";
 import { Button } from "@/components/ui/button";
@@ -44,6 +45,7 @@ const Index = () => {
       <Header />
       <Hero />
       <ClientCarousel />
+      <TechNews />
       <HistorySection />
 
       {/* Cases em Destaque */}

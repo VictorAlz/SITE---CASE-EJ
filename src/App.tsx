@@ -18,6 +18,8 @@ import Contratos from "./pages/Contratos";
 import ContractsAdmin from "./pages/ContractsAdmin";
 import ContractSign from "./pages/ContractSign";
 import NotFound from "./pages/NotFound";
+import Blog from "./pages/Blog";
+import BlogArticle from "./pages/BlogArticle";
 
 const queryClient = new QueryClient();
 
@@ -34,6 +36,8 @@ const App = () => (
           <Route path="/cases" element={<Cases />} />
           <Route path="/solucoes" element={<Solutions />} />
           <Route path="/equipe" element={<Team />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
