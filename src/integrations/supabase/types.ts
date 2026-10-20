@@ -457,8 +457,57 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      accept_invite: { Args: { _token: string }; Returns: boolean }
       can_delegate: { Args: { _user_id: string }; Returns: boolean }
       can_invite: { Args: { _user_id: string }; Returns: boolean }
+      get_contract_by_token: {
+        Args: { _token: string }
+        Returns: {
+          client_address: string | null
+          client_document: string | null
+          client_name: string | null
+          client_signature: string | null
+          contract_value: number | null
+          created_at: string
+          created_by: string | null
+          id: string
+          issue_date: string
+          signed_at: string | null
+          status: Database["public"]["Enums"]["contract_status"]
+          token: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "contracts"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
+      get_invite_by_token: {
+        Args: { _token: string }
+        Returns: {
+          assign_role: Database["public"]["Enums"]["app_role"]
+          cargo: string
+          created_at: string
+          created_by: string
+          email: string | null
+          expires_at: string
+          id: string
+          recipient_name: string | null
+          status: string
+          token: string
+          updated_at: string
+          used_at: string | null
+          used_by: string | null
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "project_invites"
+          isOneToOne: false
+          isSetofReturn: true
+        }
+      }
       has_minimum_role: {
         Args: {
           _min_role: Database["public"]["Enums"]["app_role"]
@@ -472,6 +521,36 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      sign_contract: {
+        Args: {
+          _address: string
+          _document: string
+          _name: string
+          _signature: string
+          _token: string
+        }
+        Returns: {
+          client_address: string | null
+          client_document: string | null
+          client_name: string | null
+          client_signature: string | null
+          contract_value: number | null
+          created_at: string
+          created_by: string | null
+          id: string
+          issue_date: string
+          signed_at: string | null
+          status: Database["public"]["Enums"]["contract_status"]
+          token: string
+          updated_at: string
+        }[]
+        SetofOptions: {
+          from: "*"
+          to: "contracts"
+          isOneToOne: false
+          isSetofReturn: true
+        }
       }
     }
     Enums: {

@@ -42,9 +42,7 @@ export default function ContractSign() {
   useEffect(() => {
     (async () => {
       const { data, error } = await supabase
-        .from("contracts")
-        .select("*")
-        .eq("token", token!)
+        .rpc("get_contract_by_token", { _token: token! })
         .maybeSingle();
       if (error || !data) {
         toast({ title: "Contrato não encontrado", variant: "destructive" });
@@ -67,18 +65,14 @@ export default function ContractSign() {
     setSaving(true);
     const signature = sigRef.current.toDataURL("image/png");
     const { data, error } = await supabase
-      .from("contracts")
-      .update({
-        client_name: name,
-        client_document: doc,
-        client_address: address,
-        client_signature: signature,
-        status: "signed",
-        signed_at: new Date().toISOString(),
+      .rpc("sign_contract", {
+        _token: token!,
+        _name: name,
+        _document: doc,
+        _address: address,
+        _signature: signature,
       })
-      .eq("token", token!)
-      .select()
-      .single();
+      .maybeSingle();
     setSaving(false);
     if (error || !data) {
       toast({ title: "Erro ao assinar", description: error?.message, variant: "destructive" });
