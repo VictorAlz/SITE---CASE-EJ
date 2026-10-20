@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import timeReunidoAsset from "@/assets/historia-time-reunido.jpg.asset.json";
 import certificadoAsset from "@/assets/historia-certificado.jpg.asset.json";
 import ContactDialog from "@/components/ContactDialog";
@@ -26,6 +27,27 @@ const reconhecimento: Shot = {
 };
 
 const shots = [sede, reconhecimento];
+const rowRatio = shots.reduce((acc, shot) => acc + shot.ratio, 0);
+
+const ShotCell = ({ shot, style, delay }: { shot: Shot; style?: CSSProperties; delay?: number }) => (
+  <div
+    className="group relative min-w-0 overflow-hidden bg-background animate-fade-in"
+    style={{ ...style, animationDelay: `${delay ?? 0}ms` }}
+  >
+    <img
+      src={shot.src}
+      alt={shot.alt}
+      loading="lazy"
+      className="absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
+    />
+    <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/20" />
+    <div className="absolute bottom-0 left-0 z-10 px-3 py-1.5 md:px-4 md:py-2 bg-background/90 backdrop-blur-sm">
+      <span className="font-mono text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] uppercase text-highlight whitespace-nowrap">
+        {shot.label}
+      </span>
+    </div>
+  </div>
+);
 
 const HomePromise = () => (
   <section className="py-20 md:py-28 bg-background border-b border-border">
@@ -60,27 +82,30 @@ const HomePromise = () => (
         />
       </div>
 
-      {/* Duas fotos: célula com a proporção original de cada uma, sem corte */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border">
+      {/* Celular: uma foto embaixo da outra, cada uma na sua proporção original */}
+      <div className="md:hidden grid gap-px bg-border border border-border">
         {shots.map((shot, index) => (
-          <div
+          <ShotCell
             key={shot.label}
-            className="group relative overflow-hidden bg-background animate-fade-in"
-            style={{ aspectRatio: `${shot.ratio} / 1`, animationDelay: `${index * 100}ms` }}
-          >
-            <img
-              src={shot.src}
-              alt={shot.alt}
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
-            />
-            <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/20" />
-            <div className="absolute bottom-0 left-0 z-10 px-3 py-1.5 md:px-4 md:py-2 bg-background/90 backdrop-blur-sm">
-              <span className="font-mono text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] uppercase text-highlight whitespace-nowrap">
-                {shot.label}
-              </span>
-            </div>
-          </div>
+            shot={shot}
+            delay={index * 100}
+            style={{ aspectRatio: `${shot.ratio} / 1` }}
+          />
+        ))}
+      </div>
+
+      {/* Desktop: fileira única, alturas iguais e nenhum corte */}
+      <div
+        className="hidden md:flex gap-px bg-border border border-border"
+        style={{ aspectRatio: `${rowRatio} / 1` }}
+      >
+        {shots.map((shot, index) => (
+          <ShotCell
+            key={shot.label}
+            shot={shot}
+            delay={index * 100}
+            style={{ flexGrow: shot.ratio, flexBasis: 0 }}
+          />
         ))}
       </div>
     </div>
