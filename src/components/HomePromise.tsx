@@ -41,8 +41,8 @@ const ShotCell = ({ shot, style, delay }: { shot: Shot; style?: CSSProperties; d
       className="absolute inset-0 h-full w-full object-cover transition-all duration-[1200ms] ease-out group-hover:scale-[1.04]"
     />
     <div className="absolute inset-0 bg-primary/0 transition-colors duration-500 group-hover:bg-primary/20" />
-    <div className="absolute bottom-0 left-0 z-10 px-3 py-1.5 md:px-4 md:py-2 bg-background/90 backdrop-blur-sm">
-      <span className="font-mono text-[8px] md:text-[10px] tracking-[0.15em] md:tracking-[0.25em] uppercase text-highlight whitespace-nowrap">
+    <div className="absolute bottom-0 left-0 z-10 px-2 py-1 bg-background/90 backdrop-blur-sm">
+      <span className="font-mono text-[7px] tracking-[0.12em] uppercase text-highlight whitespace-nowrap">
         {shot.label}
       </span>
     </div>
@@ -50,53 +50,38 @@ const ShotCell = ({ shot, style, delay }: { shot: Shot; style?: CSSProperties; d
 );
 
 const HomePromise = () => (
-  <section className="py-20 md:py-28 bg-background border-b border-border">
+  <section className="py-12 md:py-16 bg-background border-b border-border">
     <div className="container-custom">
       {/* Copy curta */}
-      <div className="mb-12 md:mb-16 max-w-3xl animate-fade-in">
-        <div className="font-mono text-[11px] tracking-[0.25em] uppercase text-highlight flex items-center gap-3 mb-6">
-          <span className="inline-block h-px w-8 bg-highlight/60" />
+      <div className="mb-7 md:mb-8 max-w-xl animate-fade-in">
+        <div className="font-mono text-[10px] tracking-[0.25em] uppercase text-highlight flex items-center gap-3 mb-4">
+          <span className="inline-block h-px w-6 bg-highlight/60" />
           CASE EJ · Trajetória
         </div>
-        <h2 className="font-serif uppercase text-foreground leading-[0.95] tracking-tight text-4xl md:text-5xl lg:text-6xl font-normal mb-6">
-          Mais de cinco<br />
-          anos fazendo a ideia<br />
-          <em className="not-italic text-highlight">acontecer</em>.
+        <h2 className="font-serif uppercase text-foreground leading-[1] tracking-tight text-2xl md:text-3xl font-normal mb-4">
+          Mais de cinco anos<br />
+          fazendo a ideia <em className="not-italic text-highlight">acontecer</em>.
         </h2>
-        <p className="font-mono text-xs sm:text-sm text-muted-foreground max-w-xl leading-relaxed tracking-wide mb-8">
+        <p className="font-mono text-[11px] sm:text-xs text-muted-foreground max-w-md leading-relaxed tracking-wide mb-5">
           A CASE nasce em Macaé, dentro da sala de aula, e entrega no mundo
           real: solução sob medida que o cliente usa todo dia e vê render.
-          Conte onde quer chegar — a gente mostra o caminho e caminha junto.
         </p>
 
         <ContactDialog
           trigger={
             <Button
-              size="lg"
-              className="group rounded-none font-mono text-xs tracking-[0.2em] uppercase px-7 py-6 bg-primary text-primary-foreground hover:bg-primary/90"
+              className="group rounded-none font-mono text-[11px] tracking-[0.2em] uppercase px-5 py-3 h-auto bg-primary text-primary-foreground hover:bg-primary/90"
             >
               Fale com a CASE
-              <ArrowRight className="ml-3 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
             </Button>
           }
         />
       </div>
 
-      {/* Celular: uma foto embaixo da outra, cada uma na sua proporção original */}
-      <div className="md:hidden grid gap-px bg-border border border-border">
-        {shots.map((shot, index) => (
-          <ShotCell
-            key={shot.label}
-            shot={shot}
-            delay={index * 100}
-            style={{ aspectRatio: `${shot.ratio} / 1` }}
-          />
-        ))}
-      </div>
-
-      {/* Desktop: fileira única, alturas iguais e nenhum corte */}
+      {/* Fileirinha com as duas fotos, cada uma na sua proporção, sem corte */}
       <div
-        className="hidden md:flex gap-px bg-border border border-border"
+        className="flex gap-px bg-border border border-border w-full max-w-md"
         style={{ aspectRatio: `${rowRatio} / 1` }}
       >
         {shots.map((shot, index) => (
