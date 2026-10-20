@@ -1,26 +1,17 @@
 import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import OrgChart from "@/components/OrgChart";
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Mail, AlertCircle, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
+import type { TeamMember } from "@/lib/team-types";
 
 interface PSSettings {
   active: boolean;
   form_url: string;
   description: string;
-}
-
-interface TeamMember {
-  id: string;
-  name: string;
-  role: string;
-  bio: string | null;
-  linkedin_url: string | null;
-  email: string | null;
-  photo_url: string | null;
-  display_order: number;
 }
 
 const Team = () => {
