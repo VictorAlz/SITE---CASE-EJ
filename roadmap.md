@@ -3,4 +3,5 @@
 - [x] Verificar a área logada e os registros após a limpeza.
 - [x] Adicionar os LinkedIns de Ryan, Maria, Victor, Rafael e Elecides na equipe pública; os cinco links foram conferidos na página /equipe.
 - [x] Mostrar botão de e-mail para todos os membros, desativado enquanto o endereço não for informado; conferido na página.
-- [ ] Adicionar as fotos reais dos membros — bloqueado: LinkedIn recusou acesso público às fotos; aguardando envio das cinco imagens pelo usuário.
+- [x] Adicionar as fotos reais dos membros na equipe pública — cinco imagens enviadas pelo usuário, hospedadas na CDN e conferidas em /equipe.
+- [x] Enxugar o texto acima do organograma para apenas "Um time competente e experiente".
