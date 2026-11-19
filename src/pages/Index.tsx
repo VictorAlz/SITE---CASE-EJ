@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ClientCarousel from "@/components/ClientCarousel";
 import HomePromise from "@/components/HomePromise";
-import TechNews from "@/components/TechNews";
+// import TechNews from "@/components/TechNews"; // desativado momentaneamente
 import HistorySection from "@/components/HistorySection";
 import CaseCard from "@/components/CaseCard";
 import { Button } from "@/components/ui/button";
@@ -47,7 +47,7 @@ const Index = () => {
       <Hero />
       <ClientCarousel />
       <HomePromise />
-      <TechNews />
+      {/* <TechNews /> desativado momentaneamente */}
       <HistorySection />
 
       {/* Cases em Destaque */}
